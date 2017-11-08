@@ -44,7 +44,6 @@ public class Pokedex {
 
 				if (success && !checks.contains(pokemon.substring(0,pokemon.indexOf(" ")))) {
 					pokemon = document.text();	
-					//System.out.println(pokemon);
 					String name, data = null, entry = null, evo = null, moves = null, extra = null;
 					name = pokemon.substring(0,pokemon.indexOf(" ")).trim();
 					try { data = pokemon.substring(pokemon.indexOf("Pokédex data"), pokemon.indexOf("The ranges shown")); } catch (Exception ex) {}
@@ -54,14 +53,6 @@ public class Pokedex {
 					try { extra = pokemon.substring(pokemon.lastIndexOf("Evolution chart"), pokemon.indexOf("Name origin"));
 					} catch (Exception ex) { }
 					
-					//System.out.println(moves);Evolution chart #
-					//String level = pokemon.substring()
-					////////////////////////////////////entry = entry.substring(entry.indexOf("Pokédex entries") + 16);
-					//System.out.println(name + " " + data + " ----------- " + entry);
-					String entire = name + " @@ " + data + " @@ "+ entry + " @@ " + evo + " @@ " + moves + " @@ ";
-					
-					//String entire = name + " \n" + data + " \n";
-
 					//name //pokedexnumber //generation // speciea //typing // abilities //
 					String entirety = name + (name.length() < 8 ? "\t" : "") + "\t" + Parser.getPokedexNumber(data) + "\t" +
 							// generation
@@ -80,24 +71,6 @@ public class Pokedex {
 					(Parser.getHeight(data).length() < 12 ? "\t" : "\t\t" ) + Parser.getWeight(data) + "\t\t" +
 					(evo != null ? Parser.getEvolution(evo, name) : Parser.getEvolution(extra, name));
 					System.out.println(entirety);
-					//Parser.getAbilities(data);
-					//Parser.getEntry(entry);
-					//Parser.getGeneration(pokemon);
-					//System.out.println();
-					//Parser.getSpecies(data);
-					//Parser.pokedexNumber(data);
-					
-					//Parser.getTyping(data);
-					//Parser.getHeight(data);
-					//Parser.getWeight(data);
-					/*if (evo != null) {
-						Parser.getEvolution(evo, name);
-					} else {
-						Parser.getEvolution(extra, name);
-					}*/
-					
-					
-					
 					checks.add(name);
 					bw.write(entirety);
 					bw.newLine();
